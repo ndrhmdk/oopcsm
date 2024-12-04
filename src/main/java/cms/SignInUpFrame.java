@@ -6,10 +6,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 
-public class ViewFrame extends javax.swing.JFrame {
+public class SignInUpFrame extends javax.swing.JFrame {
     
 
-    public ViewFrame() {
+    public SignInUpFrame() {
 //        setUndecorated(true);
         initComponents();
         backbutton();
@@ -32,7 +32,6 @@ public class ViewFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1100, 630));
         setMinimumSize(new java.awt.Dimension(1100, 630));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
@@ -118,7 +117,7 @@ public class ViewFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewFrame().setVisible(true);
+                new SignInUpFrame().setVisible(true);
             }
         });
     }

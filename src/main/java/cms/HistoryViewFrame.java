@@ -8,9 +8,9 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author ADMIN
  */
-public class TestFrame extends javax.swing.JFrame {
+public class HistoryViewFrame extends javax.swing.JFrame {
 
-    public TestFrame() {
+    public HistoryViewFrame() {
         setUndecorated(true);
         initComponents();
     }
@@ -25,9 +25,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1100, 650));
         setMinimumSize(new java.awt.Dimension(1100, 650));
-        setPreferredSize(new java.awt.Dimension(1100, 650));
 
         leftPanel.setBackground(new java.awt.Color(24, 55, 93));
 
@@ -71,7 +69,7 @@ public class TestFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new TestFrame().setVisible(true);
+            new HistoryViewFrame().setVisible(true);
         });
     }
 
