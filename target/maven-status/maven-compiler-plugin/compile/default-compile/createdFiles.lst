@@ -9,10 +9,8 @@ cms\form\AdminHistoryViewForm$1.class
 cms\form\UserHistoryViewForm$3.class
 cms\component\btnSignInOut$1.class
 databasetest\JDBC.class
-cms\ViewFrame.class
 cms\form\AdminHistoryViewForm$3.class
 cms\form\SignUpForm.class
 cms\form\AdminHistoryViewForm$2.class
 cms\form\AdminHistoryViewForm.class
 cms\form\UserHistoryViewForm$2.class
-cms\ViewFrame$1.class

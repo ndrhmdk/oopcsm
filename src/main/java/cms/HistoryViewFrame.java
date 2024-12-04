@@ -11,7 +11,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class HistoryViewFrame extends javax.swing.JFrame {
 
     public HistoryViewFrame() {
-        setUndecorated(true);
+//        setUndecorated(true);
         initComponents();
     }
     @SuppressWarnings("unchecked")
