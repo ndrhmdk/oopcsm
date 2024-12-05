@@ -3,6 +3,7 @@ cms\component\btnSignInOut.class
 cms\form\UserHistoryViewForm$4.class
 cms\component\PanelCover.class
 cms\form\SignInForm.class
+cms\MainFrame.class
 cms\form\UserHistoryViewForm$1.class
 cms\form\UserHistoryViewForm.class
 cms\form\AdminHistoryViewForm$1.class
@@ -12,5 +13,6 @@ databasetest\JDBC.class
 cms\form\AdminHistoryViewForm$3.class
 cms\form\SignUpForm.class
 cms\form\AdminHistoryViewForm$2.class
+cms\MainFrame$1.class
 cms\form\AdminHistoryViewForm.class
 cms\form\UserHistoryViewForm$2.class
