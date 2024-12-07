@@ -74,7 +74,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Component class="cms.form.AdminHistoryViewForm" name="adminHistoryViewForm1">
+        <Component class="cms.form.UserHistoryViewForm" name="userHistoryViewForm1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
