@@ -13,16 +13,26 @@ public class CustomerHistoryView {
     public static void main(String[] args) {
         JDBC jdbc = new JDBC();
         
-        String customerName = "Rehan Rich";
+        String username = "Rehan Rich";
         
-        String query =  "SELECT t.BookingDate, t.BookingType, t.TotalPrice, m.Title AS MovieTitle, t.BookingStatus " +
+        String query = "SELECT " +
+                            "t.TicketID, " +
+                            "t.BookingDate, " +
+                            "t.BookingStatus, " +
+                            "t.TotalPrice, " +
+                            "m.Title AS MovieName, " +
+                            "c.Name AS CustomerName, " +
+                            "s.Name AS StaffName, " +
+                            "t.BookingType " +
                         "FROM Ticket t " +
-                        "JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
-                        "JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
-                        "JOIN Schedule s ON ss.ScheduleID = s.ScheduleID " +
-                        "JOIN Movie m ON s.MovieID = m.MovieID " +
-                        "JOIN Customer c ON t.CustomerID = c.CustomerID " +
-                        "WHERE c.Name = '" + customerName + "'";
+                        "LEFT JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
+                        "LEFT JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
+                        "LEFT JOIN Schedule sch ON ss.ScheduleID = sch.ScheduleID " +
+                        "LEFT JOIN Movie m ON sch.MovieID = m.MovieID " +
+                        "LEFT JOIN [User] c ON t.CustomerID = c.UserID " +
+                        "LEFT JOIN [User] s ON t.StaffID = s.UserID " +
+                        "WHERE c.Name = '" + username + "';";
+
         
         header();
         
@@ -34,7 +44,7 @@ public class CustomerHistoryView {
                 String bookingDate = result.getString("BookingDate");
                 String bookingType = result.getString("BookingType");
                 double totalPrice = result.getDouble("TotalPrice");
-                String movieName = result.getString("MovieTitle");
+                String movieName = result.getString("MovieName");
                 String bookingStatus = result.getString("BookingStatus");
                 System.out.printf("%-25s %-15s %-20.2f %-30s %-15s\n", bookingDate, bookingType, totalPrice, movieName, bookingStatus);
             }

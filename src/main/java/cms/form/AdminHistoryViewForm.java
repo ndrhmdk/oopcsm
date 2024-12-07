@@ -268,16 +268,22 @@ public class AdminHistoryViewForm extends javax.swing.JPanel {
     private void RefreshButton() {
         try {
             JDBC jdbc = new JDBC();
-            String query = 
-                "SELECT t.TicketID, t.BookingDate, t.BookingStatus, t.TotalPrice, " +
-                "m.Title AS MovieName, c.Name AS CustomerName, s.Name AS StaffName, t.BookingType " +
-                "FROM [Ticket] t " +
-                "LEFT JOIN [TicketSeat] ts ON t.TicketID = ts.TicketID " +
-                "LEFT JOIN [SeatSchedule] ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
-                "LEFT JOIN [Schedule] sch ON ss.ScheduleID = sch.ScheduleID " +
-                "LEFT JOIN [Movie] m ON sch.MovieID = m.MovieID " +
-                "LEFT JOIN [Customer] c ON t.CustomerID = c.CustomerID " +
-                "LEFT JOIN [Staff] s ON t.StaffID = s.StaffID ";
+            String query =  "SELECT " +
+                                "t.TicketID, " +
+                                "t.BookingDate, " +
+                                "t.BookingStatus, " +
+                                "t.TotalPrice, " +
+                                "m.Title AS MovieName, " +
+                                "c.Name AS CustomerName, " +
+                                "s.Name AS StaffName, " +
+                                "t.BookingType " +
+                            "FROM Ticket t " +
+                            "LEFT JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
+                            "LEFT JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
+                            "LEFT JOIN Schedule sch ON ss.ScheduleID = sch.ScheduleID " +
+                            "LEFT JOIN Movie m ON sch.MovieID = m.MovieID " +
+                            "LEFT JOIN [User] c ON t.CustomerID = c.UserID " +
+                            "LEFT JOIN [User] s ON t.StaffID = s.UserID;";
             
             Statement stmt = jdbc.getConn().createStatement();
             ResultSet result = stmt.executeQuery(query);
@@ -345,16 +351,23 @@ public class AdminHistoryViewForm extends javax.swing.JPanel {
             JDBC jdbc = new JDBC();
 
             // Base query
-            String query = 
-                "SELECT t.TicketID, t.BookingDate, t.BookingStatus, t.TotalPrice, " +
-                "m.Title AS MovieName, c.Name AS CustomerName, s.Name AS StaffName, t.BookingType " +
-                "FROM [Ticket] t " +
-                "LEFT JOIN [TicketSeat] ts ON t.TicketID = ts.TicketID " +
-                "LEFT JOIN [SeatSchedule] ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
-                "LEFT JOIN [Schedule] sch ON ss.ScheduleID = sch.ScheduleID " +
-                "LEFT JOIN [Movie] m ON sch.MovieID = m.MovieID " +
-                "LEFT JOIN [Customer] c ON t.CustomerID = c.CustomerID " +
-                "LEFT JOIN [Staff] s ON t.StaffID = s.StaffID WHERE 1=1";
+            String query =  "SELECT " +
+                                "t.TicketID, " +
+                                "t.BookingDate, " +
+                                "t.BookingStatus, " +
+                                "t.TotalPrice, " +
+                                "m.Title AS MovieName, " +
+                                "c.Name AS CustomerName, " +
+                                "s.Name AS StaffName, " +
+                                "t.BookingType " +
+                            "FROM Ticket t " +
+                            "LEFT JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
+                            "LEFT JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
+                            "LEFT JOIN Schedule sch ON ss.ScheduleID = sch.ScheduleID " +
+                            "LEFT JOIN Movie m ON sch.MovieID = m.MovieID " +
+                            "LEFT JOIN [User] c ON t.CustomerID = c.UserID " +
+                            "LEFT JOIN [User] s ON t.StaffID = s.UserID " +
+                            "WHERE 1 = 1";
 
             // Append conditions based on input
             if (!tfTicketID.getText().trim().isEmpty()) {

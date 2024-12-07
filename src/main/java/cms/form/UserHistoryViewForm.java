@@ -55,7 +55,7 @@ public class UserHistoryViewForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Booking Date", "Booking Status", "Total Price", "Movie Title", "Booking Type"
+                "Booking Date", "Booking Type", "Total Price", "Movie Title", "Booking Status"
             }
         ));
         tbHistory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,15 +230,23 @@ public class UserHistoryViewForm extends javax.swing.JPanel {
     private void RefreshButton() {
         try {
             JDBC jdbc = new JDBC();
-            String query =  
-                        "SELECT t.BookingDate, t.BookingType, t.TotalPrice, m.Title AS MovieTitle, t.BookingStatus " +
-                        "FROM Ticket t " +
-                        "JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
-                        "JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
-                        "JOIN Schedule s ON ss.ScheduleID = s.ScheduleID " +
-                        "JOIN Movie m ON s.MovieID = m.MovieID " +
-                        "JOIN Customer c ON t.CustomerID = c.CustomerID " +
-                        "WHERE c.Name = '" + username + "'";
+            String query = "SELECT " +
+                                "t.TicketID, " +
+                                "t.BookingDate, " +
+                                "t.BookingStatus, " +
+                                "t.TotalPrice, " +
+                                "m.Title AS MovieTitle, " +
+                                "c.Name AS CustomerName, " +
+                                "s.Name AS StaffName, " +
+                                "t.BookingType " +
+                            "FROM Ticket t " +
+                            "LEFT JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
+                            "LEFT JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
+                            "LEFT JOIN Schedule sch ON ss.ScheduleID = sch.ScheduleID " +
+                            "LEFT JOIN Movie m ON sch.MovieID = m.MovieID " +
+                            "LEFT JOIN [User] c ON t.CustomerID = c.UserID " +
+                            "LEFT JOIN [User] s ON t.StaffID = s.UserID " +
+                            "WHERE c.Name = '" + username + "';";
             
             Statement pstm = jdbc.getConn().createStatement();
             ResultSet result = pstm.executeQuery(query);
@@ -274,15 +282,23 @@ public class UserHistoryViewForm extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {                                          
         try {
             JDBC jdbc = new JDBC();
-            String query =  
-                "SELECT t.BookingDate, t.BookingType, t.TotalPrice, m.Title AS MovieTitle, t.BookingStatus " +
-                "FROM Ticket t " +
-                "JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
-                "JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
-                "JOIN Schedule s ON ss.ScheduleID = s.ScheduleID " +
-                "JOIN Movie m ON s.MovieID = m.MovieID " +
-                "JOIN Customer c ON t.CustomerID = c.CustomerID " +
-                "WHERE c.Name = '" + username + "'";
+            String query = "SELECT " +
+                                "t.TicketID, " +
+                                "t.BookingDate, " +
+                                "t.BookingStatus, " +
+                                "t.TotalPrice, " +
+                                "m.Title AS MovieTitle, " +
+                                "c.Name AS CustomerName, " +
+                                "s.Name AS StaffName, " +
+                                "t.BookingType " +
+                            "FROM Ticket t " +
+                            "LEFT JOIN TicketSeat ts ON t.TicketID = ts.TicketID " +
+                            "LEFT JOIN SeatSchedule ss ON ts.ScheduleSeatID = ss.ScheduleSeatID " +
+                            "LEFT JOIN Schedule sch ON ss.ScheduleID = sch.ScheduleID " +
+                            "LEFT JOIN Movie m ON sch.MovieID = m.MovieID " +
+                            "LEFT JOIN [User] c ON t.CustomerID = c.UserID " +
+                            "LEFT JOIN [User] s ON t.StaffID = s.UserID " +
+                            "WHERE c.Name = '" + username + "' ";
 
             if (!tfBookingDate.getText().trim().isEmpty()) {
                 query += " AND t.BookingDate LIKE '%" + tfBookingDate.getText().trim() + "%'";

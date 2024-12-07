@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBC {
-    static final String url = "jdbc:sqlserver://localhost:1433;trustServerCertificate=true;databaseName=dbCMSTest";
+    static final String url = "jdbc:sqlserver://localhost:1433;trustServerCertificate=true;databaseName=cmsDB";
     static final String user = "sa";
     static final String password = "andr";
     

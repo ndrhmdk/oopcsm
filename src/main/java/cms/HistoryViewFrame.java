@@ -21,7 +21,7 @@ public class HistoryViewFrame extends javax.swing.JFrame {
         adminHistoryView1 = new databasetest.AdminHistoryView();
         leftPanel = new javax.swing.JPanel();
         rightPanel = new javax.swing.JPanel();
-        adminHistoryViewForm1 = new cms.form.AdminHistoryViewForm();
+        userHistoryViewForm1 = new cms.form.UserHistoryViewForm();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -41,7 +41,7 @@ public class HistoryViewFrame extends javax.swing.JFrame {
         );
 
         rightPanel.setLayout(new java.awt.CardLayout());
-        rightPanel.add(adminHistoryViewForm1, "card2");
+        rightPanel.add(userHistoryViewForm1, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,8 +75,8 @@ public class HistoryViewFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private databasetest.AdminHistoryView adminHistoryView1;
-    private cms.form.AdminHistoryViewForm adminHistoryViewForm1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightPanel;
+    private cms.form.UserHistoryViewForm userHistoryViewForm1;
     // End of variables declaration//GEN-END:variables
 }
